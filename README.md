@@ -15,12 +15,28 @@ commandit version
 
 ## Install
 
+**Option A — CLI command (recommended)**
+
+The CLI writes the absolute binary path, which is the most reliable method:
+
+```bash
+commandit install-mcp --claude
+```
+
+**Option B — Plugin marketplace**
+
 ```bash
 # Add the marketplace
 claude plugin marketplace add chriscox/commandit-plugin
 
 # Install the plugin
 claude plugin install commandit@commandit-plugin
+```
+
+**Option C — Manual registration**
+
+```bash
+claude mcp add --scope user commandit -- /Users/you/.local/bin/commandit mcp
 ```
 
 ## Available Tools

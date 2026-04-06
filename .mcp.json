@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "commandit": {
-      "command": "commandit",
-      "args": ["mcp"]
+      "command": "/bin/sh",
+      "args": ["-lc", "commandit mcp"]
     }
   }
 }
