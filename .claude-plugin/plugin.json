@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "AI-powered command palette for developers — search, render, and paste snippets from your CommandIt library",
   "author": {
-    "name": "Chris Cox"
+    "name": "Chris Cox",
+    "email": "chris@commandit.ai",
+    "url": "https://github.com/chriscox"
   },
   "homepage": "https://commandit.ai",
-  "repository": "https://github.com/chriscox/commandit-swift",
+  "repository": "https://github.com/chriscox/commandit-plugin",
   "license": "MIT",
   "keywords": [
     "command-palette",
