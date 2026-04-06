@@ -79,6 +79,28 @@ gemini mcp add commandit -- commandit mcp
 commandit install-mcp --claude
 ```
 
+## Examples
+
+Once connected, your AI assistant can work with your snippet library through natural conversation:
+
+**Search and use snippets:**
+> "Deploy to staging" → AI finds your K8s Deploy snippet, fills env=staging, returns the rendered command
+
+**Create snippets from conversation:**
+> "Save that docker compose command as a snippet" → AI detects args, generates description, suggests category and tags
+
+**Explain unfamiliar commands:**
+> "Explain `find . -name '*.log' -mtime +30 -delete`" → AI returns flag-by-flag breakdown with safety warnings
+
+**Fill arguments from context:**
+> "Run my Docker snippet with port 8080 and image nginx" → AI renders `docker run -p 8080 --name app nginx:latest`
+
+**Browse your library:**
+> "What categories do I have?" → AI lists all categories with snippet counts
+
+**Generate commands from natural language:**
+> "Compress all PNG files recursively" → AI generates `find . -name '*.png' -exec pngquant --force --ext .png {} \;`
+
 ## Available Tools
 
 ### Free Tier
