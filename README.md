@@ -26,6 +26,7 @@ claude plugin add chriscox/commandit-plugin
 **Option B — Manual registration**
 
 ```bash
+# $(which commandit) resolves to the full path, e.g. /Users/you/.local/bin/commandit
 claude mcp add --scope user commandit -- $(which commandit) mcp
 ```
 
