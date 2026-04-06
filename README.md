@@ -1,6 +1,6 @@
-# CommandIt Plugin for Claude Code
+# CommandIt MCP Plugin
 
-[CommandIt](https://commandit.ai) is a native macOS command palette for developers. This plugin exposes CommandIt's MCP server to Claude Code, giving your AI assistant direct access to your snippet library.
+[CommandIt](https://commandit.ai) is a native macOS command palette for developers. This plugin exposes CommandIt's MCP server to any compatible AI coding assistant, giving it direct access to your snippet library.
 
 ## Prerequisites
 
@@ -15,28 +15,68 @@ commandit version
 
 ## Install
 
-**Option A — CLI command (recommended)**
+### Claude Code
 
-The CLI writes the absolute binary path, which is the most reliable method:
-
-```bash
-commandit install-mcp --claude
-```
-
-**Option B — Plugin marketplace**
+**Option A — Plugin (recommended)**
 
 ```bash
-# Add the marketplace
-claude plugin marketplace add chriscox/commandit-plugin
-
-# Install the plugin
-claude plugin install commandit@commandit-plugin
+claude plugin add chriscox/commandit-plugin
 ```
 
-**Option C — Manual registration**
+**Option B — Manual registration**
 
 ```bash
 claude mcp add --scope user commandit -- /Users/you/.local/bin/commandit mcp
+```
+
+### Cursor / Windsurf
+
+Add to your config file (`~/.cursor/mcp.json` or `~/.windsurf/mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "commandit": {
+      "command": "/bin/sh",
+      "args": ["-lc", "commandit mcp"]
+    }
+  }
+}
+```
+
+Or use the CLI to write the absolute path automatically:
+
+```bash
+commandit install-mcp --cursor    # or --windsurf
+```
+
+### VS Code
+
+Add to `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "commandit": {
+      "type": "stdio",
+      "command": "/bin/sh",
+      "args": ["-lc", "commandit mcp"]
+    }
+  }
+}
+```
+
+### Codex / Gemini CLI
+
+```bash
+codex mcp add commandit -- commandit mcp
+gemini mcp add commandit -- commandit mcp
+```
+
+### Claude Desktop
+
+```bash
+commandit install-mcp --claude
 ```
 
 ## Available Tools
@@ -65,29 +105,29 @@ claude mcp add --scope user commandit -- /Users/you/.local/bin/commandit mcp
 | `commandit_improve` | Improve a command template |
 | `commandit_suggest_tags` | AI-suggested tags for a snippet |
 
-## Local Testing
-
-To test the plugin locally before installing from the marketplace:
-
-```bash
-claude --plugin-dir ./commandit-plugin
-```
-
 ## Troubleshooting
 
 ### "commandit: command not found"
 
-The CLI isn't on your PATH. Open CommandIt > Settings > Developer Tools and click "Install Command Line Tool".
+The CLI isn't on your PATH. Open CommandIt > Settings > Developer Tools and click "Install Command Line Tool". Make sure `~/.local/bin` is in your PATH:
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"  # add to ~/.zshrc
+```
 
 ### Tools not appearing
 
 1. Verify the CLI works: `commandit version`
 2. Verify the MCP server starts: `commandit mcp` (should wait for JSON-RPC input on stdin)
-3. Restart Claude Code after installing the plugin
+3. Restart your editor after changing MCP config
 
-### Plugin not updating
+### MCP server not connecting
 
-Run `claude plugin update` to pull the latest version.
+The JSON configs use `/bin/sh -lc` to load your shell PATH. If that doesn't work, use the absolute path instead:
+
+```bash
+commandit install-mcp --cursor  # writes absolute path to config
+```
 
 ## Links
 
