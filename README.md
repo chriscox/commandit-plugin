@@ -26,7 +26,7 @@ claude plugin add chriscox/commandit-plugin
 **Option B — Manual registration**
 
 ```bash
-claude mcp add --scope user commandit -- /Users/you/.local/bin/commandit mcp
+claude mcp add --scope user commandit -- $(which commandit) mcp
 ```
 
 ### Cursor / Windsurf
