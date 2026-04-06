@@ -37,14 +37,14 @@ Add to your config file (`~/.cursor/mcp.json` or `~/.windsurf/mcp.json`):
 {
   "mcpServers": {
     "commandit": {
-      "command": "/bin/sh",
-      "args": ["-lc", "commandit mcp"]
+      "command": "commandit",
+      "args": ["mcp"]
     }
   }
 }
 ```
 
-Or use the CLI to write the absolute path automatically:
+Or use the CLI to write the config automatically:
 
 ```bash
 commandit install-mcp --cursor    # or --windsurf
@@ -59,8 +59,8 @@ Add to `.vscode/mcp.json`:
   "servers": {
     "commandit": {
       "type": "stdio",
-      "command": "/bin/sh",
-      "args": ["-lc", "commandit mcp"]
+      "command": "commandit",
+      "args": ["mcp"]
     }
   }
 }
@@ -145,7 +145,7 @@ export PATH="$HOME/.local/bin:$PATH"  # add to ~/.zshrc
 
 ### MCP server not connecting
 
-The JSON configs use `/bin/sh -lc` to load your shell PATH. If that doesn't work, use the absolute path instead:
+Make sure `commandit` is on your PATH (`which commandit`). If not, restart your terminal — the installer adds `~/.local/bin` to your shell profile automatically. For maximum reliability, use `install-mcp` which writes the absolute path:
 
 ```bash
 commandit install-mcp --cursor  # writes absolute path to config
