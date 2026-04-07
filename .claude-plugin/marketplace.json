@@ -1,0 +1,22 @@
+{
+  "name": "commandit",
+  "owner": {
+    "name": "Chris Cox",
+    "email": "chris@commandit.ai",
+    "url": "https://github.com/chriscox"
+  },
+  "metadata": {
+    "description": "AI-powered command palette for developers",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "commandit",
+      "source": "./",
+      "description": "Search, render, and paste snippets from your CommandIt library via MCP",
+      "version": "1.0.0",
+      "category": "developer-tools",
+      "tags": ["mcp", "snippets", "command-palette"]
+    }
+  ]
+}
